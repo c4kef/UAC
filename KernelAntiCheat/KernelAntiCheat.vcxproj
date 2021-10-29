@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Win10Debug|x64">
+      <Configuration>Win10Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win10Release|x64">
+      <Configuration>Win10Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>KernelAntiCheat</ProjectName>
+    <ProjectGuid>{AA863813-E90A-4DF9-B032-839573C0DD54}</ProjectGuid>
+    <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="PropertySheets">
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10Debug|x64'" Label="Configuration">
+    <TargetVersion>
+    </TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <DriverTargetPlatform>Desktop</DriverTargetPlatform>
+    <SupportsPackaging>false</SupportsPackaging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10Release|x64'" Label="Configuration">
+    <TargetVersion>
+    </TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <DriverTargetPlatform>Desktop</DriverTargetPlatform>
+    <SupportsPackaging>false</SupportsPackaging>
+    <ALLOW_DATE_TIME>
+    </ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10Debug|x64'">
+    <OutDir>..\Build\</OutDir>
+    <TimeStampServer>http://timestamp.verisign.com/scripts/timstamp.dll</TimeStampServer>
+    <IntDir>..\Build\Cache\</IntDir>
+    <TargetName>$(TargetName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10Release|x64'">
+    <OutDir>..\Build\</OutDir>
+    <IntDir>..\Build\Cache\</IntDir>
+    <TargetName>$(TargetName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win10Debug|x64'">
+    <ClCompile>
+      <CompileAs>Default</CompileAs>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+    </ClCompile>
+    <Link>
+      <OutputFile>\$(OutDir)\$(TargetName)\$(TargetExt)\</OutputFile>
+      <AdditionalDependencies>..\LIbs\ci.lib;%(AdditionalDependencies);$(KernelBufferOverflowLib);$(DDK_LIB_PATH)ntoskrnl.lib;$(DDK_LIB_PATH)hal.lib;$(DDK_LIB_PATH)wmilib.lib</AdditionalDependencies>
+      <AdditionalOptions>/integritycheck %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win10Release|x64'">
+    <ClCompile>
+      <CompileAs>CompileAsC</CompileAs>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <LanguageStandard>Default</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>..\LIbs\ci.lib;%(AdditionalDependencies);$(KernelBufferOverflowLib);$(DDK_LIB_PATH)ntoskrnl.lib;$(DDK_LIB_PATH)hal.lib;$(DDK_LIB_PATH)wmilib.lib</AdditionalDependencies>
+      <EntryPointSymbol>DriverEntry</EntryPointSymbol>
+      <AdditionalOptions>/integritycheck %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <FilesToPackage Include="$(TargetPath)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="entry.c" />
+    <ClCompile Include="Funcs\Hardware\HardwareInfo.c" />
+    <ClCompile Include="Funcs\log.c" />
+    <ClCompile Include="Funcs\Protects\ScanBigPool.c" />
+    <ClCompile Include="Funcs\Protects\ScanDispatchDrivers.c" />
+    <ClCompile Include="Funcs\Protects\ScanCodeIntegrity.c" />
+    <ClCompile Include="Funcs\Protects\ScanHV.c" />
+    <ClCompile Include="Funcs\Protects\ScanPerfectInjector.c" />
+    <ClCompile Include="Funcs\Protects\ScanPhysMemHandles.c" />
+    <ClCompile Include="Funcs\Protects\ScanPIDDB.c" />
+    <ClCompile Include="Funcs\Protects\ScanSSDTHooks.c" />
+    <ClCompile Include="Funcs\Protects\ScanSysThreads.c" />
+    <ClCompile Include="Funcs\utils.c" />
+    <ClCompile Include="Natives\Hde\hde64.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Funcs\funcs.h" />
+    <ClInclude Include="Funcs\Hardware\HardwareInfo.h" />
+    <ClInclude Include="Funcs\log.h" />
+    <ClInclude Include="Funcs\Protects\ScanUnloadedDrivers.c" />
+    <ClInclude Include="Funcs\utils.h" />
+    <ClInclude Include="Natives\Hde\hde64.h" />
+    <ClInclude Include="Natives\Hde\table64.h" />
+    <ClInclude Include="Natives\Imports.h" />
+    <ClInclude Include="Natives\NativeEnums.h" />
+    <ClInclude Include="Natives\NativeStructs.h" />
+    <ClInclude Include="Natives\PEStructs.h" />
+    <ClInclude Include="Natives\stdint.h" />
+    <ClInclude Include="Natives\Windows\ci.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

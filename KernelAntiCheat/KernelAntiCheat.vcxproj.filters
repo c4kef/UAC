@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Funcs\utils.c">
+      <Filter>Funcs</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanSysThreads.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanBigPool.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanPIDDB.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanHV.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanPhysMemHandles.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanPerfectInjector.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanDispatchDrivers.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Hardware\HardwareInfo.c">
+      <Filter>Funcs\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="entry.c" />
+    <ClCompile Include="Funcs\log.c">
+      <Filter>Funcs</Filter>
+    </ClCompile>
+    <ClCompile Include="Natives\Hde\hde64.c">
+      <Filter>Natives\Hde</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanCodeIntegrity.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+    <ClCompile Include="Funcs\Protects\ScanSSDTHooks.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Funcs">
+      <UniqueIdentifier>{4b53cc74-a67c-4c32-88be-7954cd4a5a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Natives">
+      <UniqueIdentifier>{9f81114e-7e49-40e8-8d6e-1d315229a48f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Funcs\Protects">
+      <UniqueIdentifier>{d3ce92f0-3fe8-4b38-9b10-7b923b80753b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Funcs\Hardware">
+      <UniqueIdentifier>{f24084d8-be8f-4e64-aee5-fd4155b64df8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Natives\Hde">
+      <UniqueIdentifier>{e9726a29-7cf8-4962-adf7-a081174e00e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Natives\Windows">
+      <UniqueIdentifier>{e3ef8f34-a479-4eb8-b410-680c80058a6b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Funcs\utils.h">
+      <Filter>Funcs</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\Imports.h">
+      <Filter>Natives</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\NativeEnums.h">
+      <Filter>Natives</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\NativeStructs.h">
+      <Filter>Natives</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\PEStructs.h">
+      <Filter>Natives</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\stdint.h">
+      <Filter>Natives</Filter>
+    </ClInclude>
+    <ClInclude Include="Funcs\funcs.h">
+      <Filter>Funcs</Filter>
+    </ClInclude>
+    <ClInclude Include="Funcs\Hardware\HardwareInfo.h">
+      <Filter>Funcs\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="Funcs\Protects\ScanUnloadedDrivers.c">
+      <Filter>Funcs\Protects</Filter>
+    </ClInclude>
+    <ClInclude Include="Funcs\log.h">
+      <Filter>Funcs</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\Hde\hde64.h">
+      <Filter>Natives\Hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\Hde\table64.h">
+      <Filter>Natives\Hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Natives\Windows\ci.h">
+      <Filter>Natives\Windows</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
